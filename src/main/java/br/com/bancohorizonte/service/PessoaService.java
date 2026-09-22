@@ -9,7 +9,22 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class PessoaService {
-    private final PessoaRepository pessoas;
-    public PessoaService(PessoaRepository pessoas) { this.pessoas = pessoas; }
-    @Transactional public PessoaResponse cadastrar(PessoaRequest r) { if (pessoas.existsByCpf(r.cpf())) throw new RegraNegocioException("CPF já cadastrado."); return PessoaResponse.from(pessoas.save(new Pessoa(r.nome().trim(), r.cpf(), r.email().trim()))); }
+    private final PessoaRepository pessoasRepository;
+
+    public PessoaService(PessoaRepository pessoas) { 
+        this.pessoasRepository = pessoas; 
+    }
+
+
+    @Transactional public Pessoa cadastrar(String nome, String cpf, String email) {
+        
+        if (pessoasRepository.existsByCpf(cpf)) {
+            throw new RegraNegocioException("CPF já cadastrado");
+        }
+
+        Pessoa pessoa = new Pessoa(nome, cpf, email);
+        return pessoasRepository.save(pessoa);
+    }
+
+    
 }
