@@ -1,0 +1,4 @@
+CREATE TABLE tipos_conta (id BIGSERIAL PRIMARY KEY, nome VARCHAR(30) NOT NULL UNIQUE);
+CREATE TABLE pessoas (id BIGSERIAL PRIMARY KEY, nome VARCHAR(120) NOT NULL, cpf CHAR(11) NOT NULL UNIQUE, email VARCHAR(160) NOT NULL);
+CREATE TABLE contas_bancarias (id BIGSERIAL PRIMARY KEY, agencia CHAR(4) NOT NULL, numero VARCHAR(8) NOT NULL, saldo NUMERIC(19,2) NOT NULL CHECK (saldo >= 0), ativa BOOLEAN NOT NULL, titular_id BIGINT NOT NULL REFERENCES pessoas(id), tipo_conta_id BIGINT NOT NULL REFERENCES tipos_conta(id), CONSTRAINT uk_conta_agencia_numero UNIQUE (agencia, numero));
+INSERT INTO tipos_conta(nome) VALUES ('CORRENTE'), ('POUPANCA'), ('SALARIO');

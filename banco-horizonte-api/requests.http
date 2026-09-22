@@ -1,0 +1,29 @@
+### Criar pessoa
+POST http://localhost:8080/api/pessoas
+Content-Type: application/json
+
+{"nome":"Camila Ferreira","cpf":"55566677788","email":"camila@example.com"}
+
+### Abrir conta (os IDs dependem do banco)
+POST http://localhost:8080/api/contas
+Content-Type: application/json
+
+{"agencia":"0001","numero":"200001-9","saldoInicial":250.00,"ativa":true,"titularId":1,"tipoContaId":1}
+
+### Buscar conta
+GET http://localhost:8080/api/contas/1
+
+### Listar contas da pessoa
+GET http://localhost:8080/api/contas/pessoa/1
+
+### Depositar
+PATCH http://localhost:8080/api/contas/1/depositos
+Content-Type: application/json
+
+{"valor":100.00}
+
+### Sacar
+PATCH http://localhost:8080/api/contas/1/saques
+Content-Type: application/json
+
+{"valor":75.50}

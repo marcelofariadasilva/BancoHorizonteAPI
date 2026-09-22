@@ -1,0 +1,1 @@
+package br.com.bancohorizonte.controller; import br.com.bancohorizonte.dto.*; import br.com.bancohorizonte.service.PessoaService; public class PessoaController {private final PessoaService service; public PessoaController(PessoaService service){this.service=service;} public PessoaResponse criar(PessoaRequest request){return service.criar(request);} }

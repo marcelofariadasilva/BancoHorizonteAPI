@@ -1,0 +1,1 @@
+package br.com.bancohorizonte.exception; public class TipoContaNaoEncontradoException extends BusinessException { public TipoContaNaoEncontradoException(Long id){super("Tipo de conta não encontrado: "+id);} }
