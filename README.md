@@ -49,9 +49,9 @@ Exemplo de variáveis para uma conexão remota:
 macOS/Linux:
 
 ```bash
-export DB_URL='jdbc:postgresql://HOST:PORT/banco_horizonte?sslmode=require'
-export DB_USER='SEU_USUARIO'
-export DB_PASSWORD='SUA_SENHA'
+export DB_URL='jdbc:postgresql://aws-0-ca-central-1.pooler.supabase.com:6543/postgres?sslmode=require'
+export DB_USER='postgres.ihnullwzodkyclyslypb'
+export DB_PASSWORD='Legonardo123'
 ```
 
 
@@ -59,9 +59,9 @@ export DB_PASSWORD='SUA_SENHA'
 Windows PowerShell:
 
 ```powershell
-$env:DB_URL = 'jdbc:postgresql://HOST:PORT/banco_horizonte?sslmode=require'
-$env:DB_USER = 'SEU_USUARIO'
-$env:DB_PASSWORD = 'SUA_SENHA'
+$env:DB_URL = 'jdbc:postgresql://aws-0-ca-central-1.pooler.supabase.com:6543/sslmode=require'
+$env:DB_USER = 'postgres.ihnullwzodkyclyslypb'
+$env:DB_PASSWORD = 'Legonardo123'
 ```
 
 

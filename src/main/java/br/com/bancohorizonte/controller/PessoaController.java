@@ -11,6 +11,9 @@ import java.net.URI;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController 
 @RequestMapping("/api/pessoas")
@@ -36,6 +39,13 @@ public class PessoaController {
 
         return ResponseEntity.created(location).body(PessoaResponse.de(pessoa)); 
     }
+
+
+    @GetMapping("path")
+    public String getMethodName(@RequestParam String param) {
+        return new String();
+    }
+    
 
 
 }
