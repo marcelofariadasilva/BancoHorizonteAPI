@@ -1,1 +1,0 @@
-package br.com.bancohorizonte.exception; public class BusinessException extends RuntimeException { public BusinessException(String message){super(message);} }

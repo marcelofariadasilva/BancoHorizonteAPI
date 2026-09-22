@@ -1,12 +1,12 @@
 # Banco Horizonte API
 
-API de agência bancária sem Spring, construída com Java 25, Maven, JPA/Hibernate, PostgreSQL e `HttpServer` do JDK.
+Desafio de agência bancária implementado com Java 25, Spring Boot, Spring Data JPA e PostgreSQL.
 
 ## Requisitos
 
 - JDK 25
-- Maven 3.9 ou superior
-- PostgreSQL 14 ou superior
+- Maven 3.9+
+- PostgreSQL 14+
 
 ## Banco de dados
 
@@ -14,17 +14,21 @@ API de agência bancária sem Spring, construída com Java 25, Maven, JPA/Hibern
 CREATE DATABASE banco_horizonte;
 ```
 
-```bash
-psql -U postgres -d banco_horizonte -f src/main/resources/db/init.sql
-```
+A aplicação cria as tabelas e carrega os tipos `CORRENTE`, `POUPANCA` e `SALARIO` por `schema.sql` e `data.sql`.
 
-## Execução
+## Executar
 
 ```bash
 mvn clean test
-mvn exec:java
+mvn spring-boot:run
 ```
 
-A API inicia em `http://localhost:8080`.
+A API inicia em `http://localhost:8080`. As seis rotas obrigatórias e exemplos de uso estão em [requests.http](requests.http).
 
-Consulte `requests.http` para as requisições de teste.
+## Regras garantidas
+
+- CPF e agência+número únicos;
+- conta vinculada a pessoa e tipo existentes;
+- valores monetários com `BigDecimal`;
+- conta inativa, valor inválido e saldo insuficiente retornam conflito;
+- operações de escrita são transacionais.

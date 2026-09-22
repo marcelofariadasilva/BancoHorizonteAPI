@@ -1,1 +1,0 @@
-package br.com.bancohorizonte.exception; public class ValorMovimentacaoInvalidoException extends BusinessException { public ValorMovimentacaoInvalidoException(){super("O valor da movimentação deve ser maior que zero.");} }

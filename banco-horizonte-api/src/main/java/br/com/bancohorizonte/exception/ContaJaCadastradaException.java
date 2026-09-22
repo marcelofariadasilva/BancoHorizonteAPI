@@ -1,1 +1,0 @@
-package br.com.bancohorizonte.exception; public class ContaJaCadastradaException extends BusinessException { public ContaJaCadastradaException(String agencia,String numero){super("Conta já cadastrada: "+agencia+"/"+numero);} }

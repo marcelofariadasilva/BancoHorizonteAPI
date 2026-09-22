@@ -1,1 +1,0 @@
-package br.com.bancohorizonte.dto; import java.math.BigDecimal; public record ContaResponse(Long id,String agencia,String numero,BigDecimal saldo,boolean ativa,TitularResponse titular,TipoContaResponse tipoConta) {}

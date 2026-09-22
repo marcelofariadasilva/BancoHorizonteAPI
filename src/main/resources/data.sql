@@ -1,0 +1,1 @@
+INSERT INTO tipos_conta(nome) VALUES ('CORRENTE'), ('POUPANCA'), ('SALARIO') ON CONFLICT (nome) DO NOTHING;
