@@ -8,11 +8,11 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import java.net.URI;
+import java.util.List;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController 
@@ -21,7 +21,9 @@ public class PessoaController {
 
     private final PessoaService service;
 
-    public PessoaController(PessoaService service) { this.service = service; }
+    public PessoaController(PessoaService service) { 
+        this.service = service; 
+    }
     
     @PostMapping
     @Operation(summary = "Criar pessoa")
@@ -41,11 +43,16 @@ public class PessoaController {
     }
 
 
-    @GetMapping("path")
-    public String getMethodName(@RequestParam String param) {
-        return new String();
+    @GetMapping
+    @Operation (summary = "Listar pessoas")
+    @ApiResponse(responseCode = "200", description = "Lista de pessoas")
+    public List<PessoaResponse> listar() {
+
+        return service.listar().stream().map(PessoaResponse::de).toList();   
+
     }
     
+
 
 
 }

@@ -1,9 +1,9 @@
 package br.com.bancohorizonte.service;
 
-import br.com.bancohorizonte.dto.*;
 import br.com.bancohorizonte.entity.Pessoa;
 import br.com.bancohorizonte.exception.RegraNegocioException;
 import br.com.bancohorizonte.repository.PessoaRepository;
+import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,7 +16,8 @@ public class PessoaService {
     }
 
 
-    @Transactional public Pessoa cadastrar(String nome, String cpf, String email) {
+    @Transactional 
+    public Pessoa cadastrar(String nome, String cpf, String email) {
         
         if (pessoasRepository.existsByCpf(cpf)) {
             throw new RegraNegocioException("CPF já cadastrado");
@@ -25,6 +26,14 @@ public class PessoaService {
         Pessoa pessoa = new Pessoa(nome, cpf, email);
         return pessoasRepository.save(pessoa);
     }
+
+
+    public List<Pessoa> listar(){
+        return pessoasRepository.findAll();
+    }
+
+
+
 
     
 }

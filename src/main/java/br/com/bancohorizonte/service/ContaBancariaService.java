@@ -1,6 +1,5 @@
 package br.com.bancohorizonte.service;
 
-import br.com.bancohorizonte.dto.*;
 import br.com.bancohorizonte.entity.*;
 import br.com.bancohorizonte.exception.*;
 import br.com.bancohorizonte.repository.*;
@@ -45,7 +44,31 @@ public class ContaBancariaService {
 
 
     
-    // @Transactional(readOnly = true) public ContaResponse buscar(Long id) { return ContaResponse.from(contasRepository.findById(id).orElseThrow(() -> new ContaNaoEncontradaException("Conta não encontrada."))); }
+    @Transactional(readOnly = true) 
+    public ContaBancaria buscar(Long id) { 
+
+        if (!contasRepository.existsById(id)) 
+            throw new ContaNaoEncontradaException("Conta não encontrada.");
+
+        return contasRepository.findWithTitularAndTipoContaById(id).get();
+    }
+
+
+    @Transactional
+    public List<TipoConta> listarTipoContas() { 
+        return tipoContaRepository.findAll(); 
+    }
+
+    @Transactional 
+    public List<ContaBancaria> listarPorPessoa(Long pessoaId) { 
+
+        if (!pessoasRepository.existsById(pessoaId)) {
+            throw new PessoaNaoEncontradaException("Pessoa não encontrada.");
+        }
+
+        return contasRepository.findByTitularId(pessoaId); 
+    }
+    
     
     // @Transactional(readOnly = true) public List<ContaResponse> listarPorPessoa(Long id) { if (!pessoasRepository.existsById(id)) throw new PessoaNaoEncontradaException("Pessoa não encontrada."); return contasRepository.findByTitularId(id).stream().map(ContaResponse::from).toList(); }
     

@@ -7,15 +7,21 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "contas_bancarias", uniqueConstraints = @UniqueConstraint(name = "uk_conta_agencia_numero", columnNames = {"agencia", "numero"}))
 public class ContaBancaria {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
     
-    @Column(nullable = false, length = 4) private String agencia;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    private Long id;
     
-    @Column(nullable = false, length = 8) private String numero;
+    @Column(nullable = false, length = 4) 
+    private String agencia;
     
-    @Column(nullable = false, precision = 19, scale = 2) private BigDecimal saldo;
+    @Column(nullable = false, length = 8) 
+    private String numero;
     
-    @Column(nullable = false) private boolean ativa;
+    @Column(nullable = false, precision = 19, scale = 2) 
+    private BigDecimal saldo;
+    
+    @Column(nullable = false) 
+    private boolean ativa;
     
     @ManyToOne(optional = false, fetch = FetchType.LAZY) 
     @JoinColumn(name = "titular_id", nullable = false) 
